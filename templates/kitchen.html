@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🪑 Kitchen & Table Tracking Board</h2>
+<div class="row">
+    {% for order in orders %}
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm p-3">
+            <h5>Order #{{ order[0] }} - {{ order[1] }}</h5>
+            <p class="mb-1"><strong>Status:</strong> <span class="badge bg-secondary">{{ order[4] }}</span></p>
+            <p class="mb-1"><strong>Items:</strong> {{ order[2] }}</p>
+            <p class="mb-1"><strong>Total:</strong> ${{ "%.2f"|format(order[3]) }}</p>
+            <p class="mb-2"><small class="text-muted">Waiter: {{ order[6] }} at {{ order[5] }}</small></p>
+            <form method="POST">
+                <input type="hidden" name="order_id" value="{{ order[0] }}">
+                <select name="status" class="form-select form-select-sm mb-2">
+                    <option value="Preparing" {% if order[4] == 'Preparing' %}selected{% endif %}>Preparing</option>
+                    <option value="Served" {% if order[4] == 'Served' %}selected{% endif %}>Served</option>
+                    <option value="Completed" {% if order[4] == 'Completed' %}selected{% endif %}>Completed</option>
+                </select>
+                <button type="submit" class="btn btn-sm btn-primary w-100">Update Status</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

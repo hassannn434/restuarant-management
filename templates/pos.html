@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🛒 Point of Sale & Billing</h2>
+{% if success %}<div class="alert alert-success">{{ success }}</div>{% endif %}
+<form method="POST">
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-bordered bg-white shadow-sm">
+                <thead class="table-dark">
+                    <tr><th>Item Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Quantity</th></tr>
+                </thead>
+                <tbody>
+                    {% for item in menu_items %}
+                    <tr>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[2] }}</td>
+                        <td>${{ "%.2f"|format(item[3]) }}</td>
+                        <td>{{ item[4] }}</td>
+                        <td><input type="number" name="qty_{{ item[0] }}" value="0" min="0" max="{{ item[4] }}" class="form-control form-control-sm" style="width: 80px;"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-3 shadow-sm">
+                <h4>Bill Details</h4>
+                <div class="mb-3">
+                    <label>Assign Table</label>
+                    <select name="table_no" class="form-select">
+                        {% for i in range(1, 11) %}<option value="Table {{ i }}">Table {{ i }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Customer Name</label>
+                    <input type="text" name="customer_name" value="Guest" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Submit Order & Print Bill</button>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

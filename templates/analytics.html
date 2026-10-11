@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📊 Smart Sales Analytics</h2>
+<div class="row mt-4">
+    <div class="col-md-6"><div class="card p-4 text-center shadow-sm"><h3>Total Revenue</h3><h2>${{ "%.2f"|format(total_revenue) }}</h2></div></div>
+    <div class="col-md-6"><div class="card p-4 text-center shadow-sm"><h3>Total Orders</h3><h2>{{ total_orders }}</h2></div></div>
+</div>
+{% endblock %}
