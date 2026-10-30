@@ -1,5 +1,9 @@
 
 # 🍽️ Restaurant Management System
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Flask](https://img.shields.io/badge/Framework-Flask-black)
+![SQLite](https://img.shields.io/badge/Database-SQLite-blue)
+![Status](https://img.shields.io/badge/Status-Live-success)
 
 A web-based **Restaurant Management System** built using Python Flask and SQLite to simplify restaurant operations, manage orders, maintain menu items, and monitor restaurant performance through an analytics dashboard.
 
@@ -121,6 +125,19 @@ The application uses SQLite with the following main tables:
 - **Users:** Stores usernames, password hashes and user roles.
 - **Menu:** Stores food item names, categories, prices and stock.
 - **Orders:** Stores table numbers, order details, totals, preparation status and staff information.
+
+  ## 🌐 Live Demo
+
+Experience the Restaurant Management System:
+
+🔗 **Live Application:** https://hassanmahadkar.pythonanywhere.com/
+
+### Demo Credentials
+
+| Role | Username | Password |
+|---|---|---|
+| Admin | admin | admin123 |
+| Staff | waiter1 | waiter123 |
 
 ## 🔮 Future Enhancements
 
